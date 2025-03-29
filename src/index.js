@@ -16,8 +16,8 @@ app.use(express.json());
 // Enable CORS for requests from localhost:5173
 app.use(
   cors({
-    origin: ["http://102.42.114.188:5173"], // Allow frontend URL
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+    origin: ["https://joe-ruby.vercel.app"], // Allow frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed HTTP methods
     credentials: true, // Allow cookies and authentication headers if needed
   })
 );
