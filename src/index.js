@@ -3,10 +3,10 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors"; // Import CORS
 import adminRoutes from "./routes/adminRoutes.js";
-import orderRoutes from './routes/ordersRoutes.js'
-import reviewsRoutes from './routes/reviewsRoutes.js';
-import newsletterRoutes from './routes/newsletterRoutes.js';
-import paymobRoutes from './routes/paymob.js'
+import orderRoutes from "./routes/ordersRoutes.js";
+import reviewsRoutes from "./routes/reviewsRoutes.js";
+import newsletterRoutes from "./routes/newsletterRoutes.js";
+import paymobRoutes from "./routes/paymob.js";
 
 config();
 
@@ -14,11 +14,13 @@ const app = express();
 app.use(express.json());
 
 // Enable CORS for requests from localhost:5173
-app.use(cors({
-  origin: ["http://102.42.114.188:5173", "http://102.42.114.188:5174"], // Allow frontend URL
-  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
-  credentials: true // Allow cookies and authentication headers if needed
-}));
+app.use(
+  cors({
+    origin: ["http://102.42.114.188:5173"], // Allow frontend URL
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+    credentials: true, // Allow cookies and authentication headers if needed
+  })
+);
 
 mongoose
   .connect(`${process.env.DB_URI}`)
@@ -27,9 +29,9 @@ mongoose
 
 app.use("/admin", adminRoutes);
 app.use("/order", orderRoutes);
-app.use('/reviews', reviewsRoutes);
-app.use('/newsletter', newsletterRoutes);
-app.use('/paymob', paymobRoutes);
+app.use("/reviews", reviewsRoutes);
+app.use("/newsletter", newsletterRoutes);
+app.use("/paymob", paymobRoutes);
 
 const port = process.env.PORT || 3000;
 
