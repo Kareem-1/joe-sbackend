@@ -11,7 +11,6 @@ import paymobRoutes from "./routes/paymob.js";
 config();
 
 const app = express();
-app.use(express.json());
 
 // Enable CORS for requests from localhost:5173
 app.use(
@@ -21,6 +20,11 @@ app.use(
     credentials: true, // Allow cookies and authentication headers if needed
   })
 );
+
+app.options("*", cors());
+
+app.use(express.json());
+
 
 mongoose
   .connect(`${process.env.DB_URI}`)
