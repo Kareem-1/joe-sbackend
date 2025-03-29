@@ -1,5 +1,5 @@
 import express from "express";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import Admin from "../models/admin.js";
 import jwt from "jsonwebtoken";
 import { config } from "dotenv";
