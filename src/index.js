@@ -15,7 +15,7 @@ const app = express();
 // Enable CORS for requests from localhost:5173
 app.use(
   cors({
-    origin: ["https://joe-ruby.vercel.app"], // Allow frontend URL
+    origin: ["https://joe-ruby.vercel.app", "http://localhost:5173"], // Allow frontend URL
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed HTTP methods
     credentials: true, // Allow cookies and authentication headers if needed
   })
