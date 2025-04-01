@@ -10,35 +10,6 @@ import paymobRoutes from "./routes/paymob.js";
 
 config();
 
-function validateEnvVars() {
-  const requiredEnvVars = [
-    "DB_URI",
-    "PORT",
-    "JWT_SECRET",
-    "PAYMOB_API_KEY",
-    "PAYMOB_SECRET_KEY",
-    "PAYMOB_PUBLIC_KEY",
-    "PAYMOB_CARD_INTEGRATION_ID",
-    "PAYMOB_IFRAME_ID",
-    "PAYMOB_BASE_URL",
-    "PAYMOB_HMAC_SECRET",
-  ];
-
-  const missing = requiredEnvVars.filter((key) => !process.env[key]);
-
-  if (missing.length > 0) {
-    console.error("❌ Missing environment variables:", missing.join(", "));
-  } else {
-    console.log("✅ All required environment variables are set.");
-  }
-
-  // Optional: exit if any are missing
-  if (missing.length > 0) {
-    process.exit(1);
-  }
-}
-validateEnvVars();
-
 const app = express();
 
 // Enable CORS for requests from localhost:5173
@@ -53,6 +24,7 @@ app.use(
 app.options("*", cors());
 
 app.use(express.json());
+
 
 mongoose
   .connect(`${process.env.DB_URI}`)
